@@ -1,0 +1,42 @@
+<?php
+   $title = 'Editar tarea';
+   $this->headTitle($title);
+?>
+<h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
+   <span class="text-muted"><?=$title?></span>
+</h4>
+
+<?php
+$task = $form->get('title');
+$task->setAttribute('class', 'form-control');
+$task->setAttribute('placeholder', 'Titulo');
+
+$description = $form->get('description');
+$description->setAttribute('class', 'form-control');
+$description->setAttribute('placeholder', 'Descripción');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('todo-app', ['action' => 'edit', 'id' => $id]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+   <div class="form-group">
+       <?= $this->formLabel($task) ?>
+       <?= $this->formElement($task) ?>
+       <?= $this->formElementErrors()->render($task, ['class' => 'help-block text-danger']) ?>
+   </div>
+
+   <div class="form-group">
+       <?= $this->formLabel($description) ?>
+       <?= $this->formElement($description) ?>
+       <?= $this->formElementErrors()->render($description, ['class' => 'help-block text-danger']) ?>
+   </div>
+  <br>
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
+?>

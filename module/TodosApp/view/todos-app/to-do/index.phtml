@@ -1,0 +1,47 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
+    <span class="text-muted">Todas las tareas</span>
+    <a class="btn btn-sm btn-info" href="<?= $this->url('todo-app', ['action' => 'create']) ?>">Crear</a>
+</h4>
+<table id="dynamicTable" class="table table-hover">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Fecha de creación</th>
+            <th>Fecha de finalización</th>
+            <th>Completada</th>
+            <td>Operaciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->tasks as $task) : ?>
+
+            <tr>
+                <td><?= $this->escapeHtml($task->title) ?></td>
+                <td><?= $this->escapeHtml($task->creationDate) ?></td>
+                <td><?= $this->escapeHtml($task->finishDate) ?></td>
+                <td><?= $task->finished ? 'Si' : 'No' ?></td>
+                <td>
+                    <a class="btn btn-info " href="<?= $this->url('todo-app', [
+                                                        'action' => 'edit',
+                                                        'id' => $task->id
+                                                    ]) ?>">editar</a>
+                    <a class="btn btn-success ml-1">Ver</a>
+                    <a class="btn btn-danger btn-sm p-1"
+   onclick="return confirm('Are you sure you want to delete?')"
+   href="<?= $this->url('todo-app', [
+           'action' => 'delete',
+           'id' => $task->id
+       ]) ?>"
+>
+      Eliminar
+ </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<script>
+    $(document).ready(function() {
+        $('#dynamicTable').DataTable();
+    });
+</script>
