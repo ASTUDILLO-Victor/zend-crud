@@ -14,5 +14,5 @@ Este es mi primer proyecto de CRUD (Crear, Leer, Actualizar y Eliminar) desarrol
 ### Paso 1: Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/nombre-del-repositorio.git
-cd nombre-del-repositorio
+[git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+cd nombre-del-repositorio](https://github.com/ASTUDILLO-Victor/zend-crud.git)
